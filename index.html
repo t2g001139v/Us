@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aditya × Aditi — Together</title>
+<meta name="description" content="A little place for Aditya and Aditi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0a0f; --surface:#14121a; --text:#f6f1eb; --muted:#aaa2ad;
+  --accent:#e7a6bd; --accent2:#bba7e8; --line:rgba(255,255,255,.09);
+  --glow:rgba(231,166,189,.15);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:
+ radial-gradient(circle at 15% 10%,rgba(187,167,232,.10),transparent 28%),
+ radial-gradient(circle at 85% 30%,rgba(231,166,189,.09),transparent 30%),
+ radial-gradient(circle at 50% 100%,rgba(231,166,189,.06),transparent 35%);}
+.container{width:min(1080px,calc(100% - 40px));margin:auto}
+nav{position:fixed;top:0;left:0;right:0;z-index:10;padding:18px 0;background:linear-gradient(180deg,rgba(11,10,15,.92),rgba(11,10,15,0));backdrop-filter:blur(8px)}
+.navin{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:"Playfair Display",serif;font-size:19px;letter-spacing:.02em}
+.logo span{color:var(--accent)}
+nav a{color:var(--muted);text-decoration:none;font-size:13px;margin-left:22px;transition:.25s}
+nav a:hover{color:var(--text)}
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;position:relative;padding:100px 0 60px}
+.kicker{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
+h1{font-family:"Playfair Display",serif;font-weight:400;font-size:clamp(55px,11vw,120px);line-height:.88;margin:0;letter-spacing:-.055em}
+h1 em{font-weight:400;color:var(--accent);font-size:.75em}
+.subtitle{font-family:"Playfair Display",serif;font-style:italic;color:var(--muted);font-size:20px;margin:28px auto 45px}
+.counter{display:flex;justify-content:center;gap:clamp(12px,4vw,42px);flex-wrap:wrap}
+.unit{min-width:70px}
+.num{font-size:clamp(28px,5vw,45px);font-weight:500;letter-spacing:-.04em}
+.label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.18em;margin-top:4px}
+.start{margin-top:35px;color:#837c86;font-size:12px}
+.scroll{position:absolute;bottom:25px;left:50%;transform:translateX(-50%);color:#706a73;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.scroll:after{content:"↓";display:block;margin-top:8px;color:var(--accent)}
+section{padding:115px 0}
+.section-title{font-family:"Playfair Display",serif;font-size:clamp(35px,6vw,58px);font-weight:400;margin:0 0 15px}
+.section-sub{color:var(--muted);max-width:520px;line-height:1.7;margin-bottom:50px}
+.timeline{position:relative;max-width:760px;margin:auto}
+.timeline:before{content:"";position:absolute;left:12px;top:4px;bottom:4px;width:1px;background:var(--line)}
+.event{position:relative;padding:0 0 50px 48px}
+.dot{position:absolute;left:7px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--accent);box-shadow:0 0 25px var(--glow)}
+.date{font-size:11px;color:var(--accent);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px}
+.event h3{font-family:"Playfair Display",serif;font-size:25px;font-weight:400;margin:0 0 8px}
+.event p{color:var(--muted);line-height:1.65;margin:0}
+.cardgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border:1px solid var(--line);border-radius:22px;padding:30px;min-height:220px;transition:transform .3s,border-color .3s}
+.card:hover{transform:translateY(-5px);border-color:rgba(231,166,189,.3)}
+.icon{font-size:23px;margin-bottom:35px}
+.card h3{font-family:"Playfair Display",serif;font-size:25px;font-weight:400;margin:0 0 10px}
+.card p{font-size:14px;color:var(--muted);line-height:1.65}
+.letter{max-width:760px;margin:auto;padding:clamp(30px,6vw,65px);border:1px solid var(--line);border-radius:28px;background:radial-gradient(circle at 85% 0,rgba(231,166,189,.08),transparent 35%),rgba(255,255,255,.025)}
+.letter .quote{font-family:"Playfair Display",serif;font-size:clamp(25px,4vw,39px);line-height:1.35}
+.signature{margin-top:35px;color:var(--accent);font-family:"Playfair Display",serif;font-style:italic}
+footer{padding:80px 0 50px;text-align:center;color:#625d66;font-size:12px}
+footer .heart{color:var(--accent);font-size:18px;margin-bottom:10px}
+.fade{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
+.fade.show{opacity:1;transform:none}
+#particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.particle{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.25;animation:float linear infinite}
+@keyframes float{from{transform:translateY(105vh);opacity:0}20%{opacity:.3}80%{opacity:.15}to{transform:translateY(-10vh);opacity:0}}
+@media(max-width:700px){.container{width:min(100% - 28px,1080px)}nav .links{display:none}.cardgrid{grid-template-columns:1fr}.hero{padding-top:120px}.counter{gap:20px}.unit{min-width:62px}}
+
+
+/* ================================
+   MEMORY / TIMELINE IMAGES
+   ================================ */
+
+.memory-content { max-width: 700px; }
+.memory-content h3 { margin-bottom: 10px; }
+.memory-content p { margin-bottom: 0; }
+
+/* small clickable photo thumbnails — click one to view it full-size */
+.memory-thumbs{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.thumb{
+  width: 86px;
+  height: 86px;
+  padding: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.025);
+  cursor: pointer;
+  transition: transform .3s ease, border-color .3s ease;
+}
+.thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s ease;
+}
+.thumb:hover{ transform: translateY(-3px); border-color: rgba(231,166,189,.35); }
+.thumb:hover img{ transform: scale(1.08); }
+.thumb:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* full-screen viewer */
+.lightbox{
+  position: fixed; inset: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(6,5,8,.92);
+  backdrop-filter: blur(6px);
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s ease;
+}
+.lightbox.open{ opacity: 1; pointer-events: auto; }
+.lightbox-img{
+  max-width: min(92vw, 900px);
+  max-height: 86vh;
+  border-radius: 10px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.5);
+}
+.lightbox-close, .lightbox-prev, .lightbox-next{
+  position: absolute;
+  background: none; border: none; color: var(--text);
+  cursor: pointer; opacity: .75; transition: opacity .25s, color .25s;
+}
+.lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover{ opacity: 1; color: var(--accent); }
+.lightbox-close{ top: 22px; right: 26px; font-size: 32px; line-height: 1; }
+.lightbox-prev, .lightbox-next{ top: 50%; transform: translateY(-50%); font-size: 26px; padding: 14px; }
+.lightbox-prev{ left: 6px; } .lightbox-next{ right: 6px; }
+.lightbox-prev.hidden, .lightbox-next.hidden{ display: none; }
+
+.memory-video{
+  margin-top: 20px;
+  width: 100%;
+  max-width: 620px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+.memory-video video{
+  display: block;
+  width: 100%;
+  max-height: 600px;
+  background: #000;
+  border-radius: 16px;
+}
+
+@media (max-width: 700px){
+  .thumb{ width: 76px; height: 76px; }
+  .lightbox-prev, .lightbox-next{ font-size: 20px; padding: 10px; }
+}
+
+</style>
+</head>
+<body>
+<nav><div class="container navin"><div class="logo">A <span>×</span> A</div><div class="links"><a href="#time">Time together</a><a href="#story">Our story</a></div></div></nav>
+
+<main>
+<section class="hero" id="time">
+<div id="particles"></div>
+<div class="container fade">
+<div class="kicker">a little place for us</div>
+<h1>Aditya <em>×</em> Aditi</h1>
+<div class="subtitle">and somehow, it became us.</div>
+<div class="counter" aria-label="Time together">
+<div class="unit"><div class="num" id="days">0</div><div class="label">days</div></div>
+<div class="unit"><div class="num" id="hours">0</div><div class="label">hours</div></div>
+<div class="unit"><div class="num" id="minutes">0</div><div class="label">minutes</div></div>
+<div class="unit"><div class="num" id="seconds">0</div><div class="label">seconds</div></div>
+</div>
+<div class="start">since 16 July 2026</div>
+</div>
+<div class="scroll">keep going</div>
+</section>
+
+
+
+<section id="story">
+  <div class="container">
+
+    <div class="fade">
+      <div class="kicker">Tale of our love</div>
+      <h2 class="section-title">Our story</h2>
+      <p class="section-sub">
+        This space is waiting for all the moments that eventually become
+        the stories you tell again and again.
+      </p>
+    </div>
+
+    <div class="timeline fade">
+
+
+      <!-- MEMORY 0 -->
+      <div class="event">
+        <span class="dot"></span>
+
+        <div class="memory-content">
+          <div class="date">10 April 2026</div>
+
+          <h3>The beginning of us</h3>
+
+          <p>
+            I, urs Meowie, texted you for the first time, a simple "hi" that would eventually lead to a lifetime of memories together.
+          </p>
+
+          
+
+        </div>
+      </div>
+
+      <!-- MEMORY 0.5 -->
+      <div class="event">
+        <span class="dot"></span>
+
+        <div class="memory-content">
+          <div class="date">26 June 2026</div>
+
+          <h3>The Confession</h3>
+
+          <p>
+            Urs meowie confessed his feelings to you, it all started with, "I think I fell in love with you." 
+          </p>
+
+          
+
+        </div>
+      </div>
+
+
+      <!-- MEMORY 0.6 -->
+      <div class="event">
+        <span class="dot"></span>
+
+        <div class="memory-content">
+          <div class="date">1 July 2026</div>
+
+          <h3>The long awaited moment</h3>
+
+          <p>
+            You, Aditi, confessed your feelings too, and said to me that you love me too. 
+          </p>
+
+          
+
+        </div>
+      </div>
+
+
+      <!-- MEMORY 1 -->
+      <div class="event">
+        <span class="dot"></span>
+
+        <div class="memory-content">
+          <div class="date">16 July 2026 · 11:47 PM</div>
+
+          <h3>The Proposal</h3>
+
+          <p>
+            I, Aditya, proposed to you to be my girlfie, Aditi, and you said yes! This was the moment that changed our lives forever, marking the start of our journey together as a couple.
+          </p>
+
+          <!-- PHOTO — click to view full-size
+          <div class="memory-thumbs">
+            <button class="thumb" data-src="images/beginning.jpg" aria-label="View photo">
+              <img src="images/beginning.jpg" alt="Our first memory" loading="lazy" decoding="async">
+            </button>
+          </div>
+        -->
+
+
+
+          <!-- VIDEO-->
+          <div class="memory-video">
+            <video controls playsinline preload="metadata">
+              <source src="videos/t2g.mp4" type="video/mp4">
+              Your browser does not support the video element.
+            </video>
+          </div>
+          
+
+        </div>
+      </div>
+
+
+      <!-- MEMORY 2 -->
+      <div class="event">
+        <span class="dot"></span>
+
+        <div class="memory-content">
+          <div class="date">16 August 2026</div>
+
+          <h3>Our 1 month anniversary</h3>
+
+          <p>
+            Put a little story here about one of your favourite moments.
+          </p>
+
+          <!-- PHOTOS — click to view full-size -->
+          <div class="memory-thumbs">
+            <button class="thumb" data-src="images/p2.jpg" aria-label="View photo">
+              <img src="images/p2.jpg" alt="A special memory" loading="lazy" decoding="async">
+            </button>
+            <button class="thumb" data-src="images/p1.jpg" aria-label="View photo">
+              <img src="images/p1.jpg" alt="A special memory" loading="lazy" decoding="async">
+            </button>
+            <button class="thumb" data-src="images/k01.jpg" aria-label="View photo">
+              <img src="images/k01.jpg" alt="A special memory" loading="lazy" decoding="async">
+            </button>
+            <button class="thumb" data-src="images/k02.jpg" aria-label="View photo">
+              <img src="images/k02.jpg" alt="A special memory" loading="lazy" decoding="async">
+            </button>
+            <button class="thumb" data-src="images/k03.jpg" aria-label="View photo">
+              <img src="images/k03.jpg" alt="A special memory" loading="lazy" decoding="async">
+            </button>
+          </div>
+
+          <!-- VIDEO
+          <div class="memory-video">
+            <video controls playsinline preload="metadata">
+              <source src="videos/memory-2.mp4" type="video/mp4">
+              Your browser does not support the video element.
+            </video>
+          </div>
+          -->
+
+        </div>
+      </div>
+
+
+      <!-- MEMORY 3 -->
+      <div class="event">
+        <span class="dot"></span>
+
+        <div class="memory-content">
+          <div class="date">another little moment</div>
+
+          <h3>More chapters</h3>
+
+          <p>
+            Because this page is supposed to grow with us.
+          </p>
+
+          <!-- PHOTO — click to view full-size
+          <div class="memory-thumbs">
+            <button class="thumb" data-src="images/memory-3.jpg" aria-label="View photo">
+              <img src="images/memory-3.jpg" alt="Another memory" loading="lazy" decoding="async">
+            </button>
+          </div>
+        -->
+
+          <!-- VIDEO
+          <div class="memory-video">
+            <video controls playsinline preload="metadata">
+              <source src="videos/memory-3.mp4" type="video/mp4">
+              Your browser does not support the video element.
+            </video>
+          </div>
+          -->
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- full-size photo viewer, shared by every memory -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous photo">&larr;</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <button class="lightbox-next" id="lightboxNext" aria-label="Next photo">&rarr;</button>
+</div>
+
+<!--
+
+<section id="little"><div class="container">
+<div class="fade"><div class="kicker">the small stuff</div><h2 class="section-title">Little things.</h2><p class="section-sub">The big moments are nice. But these are usually the ones that make something feel like yours.</p></div>
+<div class="cardgrid fade">
+<div class="card"><div class="icon">✦</div><h3>Inside jokes</h3><p>Things that make absolutely no sense to anyone else. Perfect.</p></div>
+<div class="card"><div class="icon">♡</div><h3>Favourite memories</h3><p>A tiny collection of moments you never want to forget.</p></div>
+<div class="card"><div class="icon">∞</div><h3>Random us</h3><p>Photos, screenshots, silly quotes, songs, places — whatever feels like you two.</p></div>
+</div>
+</div></section>
+-->
+
+
+<!--
+
+<section id="letter"><div class="container">
+<div class="kicker">for you</div>
+<div class="letter fade">
+<div class="quote">“There are a million little things that make a story. This is just the first page.”</div>
+<div class="signature">— Aditya, for Aditi ♡</div>
+</div>
+</div></section>
+
+-->
+
+
+</main>
+
+<footer><div class="heart">♡</div>Aditya & Aditi</footer>
+
+<script>
+const start = new Date("2026-07-16T23:47:00+05:30").getTime();
+function update(){
+  let diff = Math.max(0, Date.now()-start);
+  const d=Math.floor(diff/86400000); diff%=86400000;
+  const h=Math.floor(diff/3600000); diff%=3600000;
+  const m=Math.floor(diff/60000); diff%=60000;
+  const s=Math.floor(diff/1000);
+  document.getElementById("days").textContent=d;
+  document.getElementById("hours").textContent=h;
+  document.getElementById("minutes").textContent=m;
+  document.getElementById("seconds").textContent=s;
+}
+update(); setInterval(update,1000);
+
+const p=document.getElementById("particles");
+for(let i=0;i<34;i++){
+  const x=document.createElement("i"); x.className="particle";
+  x.style.left=Math.random()*100+"%";
+  x.style.animationDuration=(8+Math.random()*16)+"s";
+  x.style.animationDelay=(-Math.random()*18)+"s";
+  x.style.opacity=(.08+Math.random()*.25);
+  p.appendChild(x);
+}
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")});
+},{threshold:.12});
+document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
+
+// ---------- photo lightbox ----------
+(function(){
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  const btnClose = document.getElementById('lightboxClose');
+  const btnPrev = document.getElementById('lightboxPrev');
+  const btnNext = document.getElementById('lightboxNext');
+  let group = [];
+  let index = 0;
+
+  function render(){
+    const thumb = group[index];
+    lbImg.src = thumb.dataset.src;
+    lbImg.alt = thumb.querySelector('img').alt || '';
+    const multi = group.length > 1;
+    btnPrev.classList.toggle('hidden', !multi);
+    btnNext.classList.toggle('hidden', !multi);
+  }
+  function open(thumbs, i){
+    group = thumbs; index = i;
+    render();
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  function step(delta){
+    if(group.length < 2) return;
+    index = (index + delta + group.length) % group.length;
+    render();
+  }
+
+  document.querySelectorAll('.memory-thumbs').forEach(container=>{
+    const thumbs = Array.from(container.querySelectorAll('.thumb'));
+    thumbs.forEach((thumb, i) => thumb.addEventListener('click', () => open(thumbs, i)));
+  });
+
+  btnClose.addEventListener('click', close);
+  btnPrev.addEventListener('click', () => step(-1));
+  btnNext.addEventListener('click', () => step(1));
+  lightbox.addEventListener('click', e => { if(e.target === lightbox) close(); });
+  document.addEventListener('keydown', e => {
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key === 'Escape') close();
+    if(e.key === 'ArrowLeft') step(-1);
+    if(e.key === 'ArrowRight') step(1);
+  });
+})();
+</script>
+</body>
+</html>
